@@ -18,6 +18,14 @@
         placeholder="Search books..."
         formControlName="searchQuery"  
       />
+
+      <button 
+      type="button"
+      *ngIf="searchForm.get('searchQuery')?.value"  
+      class="clear-btn"
+      (click)="clearSearch()">
+      <i class="bi bi-x-circle"></i>
+    </button>
     </div>
   </form>
   
@@ -28,7 +36,7 @@
       </div>
   
       <p class="book-title">
-        {{ book.title.length > 20 ? book.title.slice(0, 20) + '...' : book.title }}
+        {{ book.title.length > 20 ? (book.title.slice(0, 20) + '...')  : book.title | uppercase }}
       </p>
   
       <p class="book-author" *ngFor="let author of book.authors">

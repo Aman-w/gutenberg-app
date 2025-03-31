@@ -37,6 +37,10 @@ export class BookListComponent implements OnInit {
       });
   }
 
+  clearSearch() {
+    this.searchForm.get('searchQuery')?.setValue('');
+  }
+
   public goBack() {
     this.router.navigate(['/']); 
   }
