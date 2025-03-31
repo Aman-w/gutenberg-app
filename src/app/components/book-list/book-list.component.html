@@ -1,49 +1,37 @@
-
 <div *ngIf="loading" class="loading-container">
-    <div class="spinner"></div>
-    <p>Loading...</p>
-  </div>
+  <div class="spinner"></div>
+  <p>Loading...</p>
+</div>
 <div class="header">
-    <button (click)="goBack()" class="back-button">
-      <i class="bi bi-arrow-left"></i>
-    </button>
-    <h2 class="heading">{{ category | titlecase  }}</h2>
-  </div>
-  
-  <form [formGroup]="searchForm"> 
-    <div class="search-container">
-      <i class="bi bi-search search-icon"></i>
-      <input 
-        type="text"
-        placeholder="Search books..."
-        formControlName="searchQuery"  
-      />
+  <button (click)="goBack()" class="back-button">
+    <i class="bi bi-arrow-left"></i>
+  </button>
+  <h2 class="heading">{{ category | titlecase }}</h2>
+</div>
 
-      <button 
-      type="button"
-      *ngIf="searchForm.get('searchQuery')?.value"  
-      class="clear-btn"
-      (click)="clearSearch()">
+<form [formGroup]="searchForm">
+  <div class="search-container">
+    <i class="bi bi-search search-icon"></i>
+    <input type="text" placeholder="Search books..." formControlName="searchQuery" />
+
+    <button type="button" *ngIf="searchForm.get('searchQuery')?.value" class="clear-btn" (click)="clearSearch()">
       <i class="bi bi-x-circle"></i>
     </button>
-    </div>
-  </form>
-  
-  <div class="book-list">
-    <div class="book-wrapper" *ngFor="let book of books" (click)="openBook(book)">
-      <div class="book-card">
-        <img [src]="book.formats['image/jpeg']" alt="Book Cover" />
-      </div>
-  
-      <p class="book-title">
-        {{ book.title.length > 20 ? (book.title.slice(0, 20) + '...')  : book.title | uppercase }}
-      </p>
-  
-      <p class="book-author" *ngFor="let author of book.authors">
-        {{ author.name.length > 20 ? author.name.slice(0, 20) + '...' : author.name }}
-      </p>
-    </div>
   </div>
-  
-  
-  
+</form>
+
+<div class="book-list">
+  <div class="book-wrapper" *ngFor="let book of books" (click)="openBook(book)">
+    <div class="book-card">
+      <img [src]="book.formats['image/jpeg']" alt="Book Cover" />
+    </div>
+
+    <p class="book-title">
+      {{ book.title.length > 20 ? (book.title.slice(0, 20) + '...') : book.title | uppercase }}
+    </p>
+
+    <p class="book-author" *ngFor="let author of book.authors">
+      {{ author.name.length > 20 ? author.name.slice(0, 20) + '...' : author.name }}
+    </p>
+  </div>
+</div>
