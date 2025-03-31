@@ -1,0 +1,12 @@
+<div class="container">
+    <h1>Gutenberg Project</h1>
+    <p>A social cataloging website that allows you to freely search its database of books, annotations, and reviews.</p>
+    <div class="category-list">
+      <div *ngFor="let category of categories" class="category" (click)="openCategory(category)">
+        <i [class]="category.icon"></i>
+        <span>{{ category.name }}</span>
+        <i class="bi bi-arrow-right"></i>
+      </div>
+    </div>
+  </div>
+  
